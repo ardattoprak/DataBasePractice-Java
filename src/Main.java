@@ -3,27 +3,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        Connection connection = null;
-        DbHelper helper = new DbHelper();
-        PreparedStatement statement = null;
-        ResultSet resultSet;
-        try {
 
-            connection = helper.getConnection();
-            String sql = "update city set population=100000, disctrict = 'Düzce' where id = ?";
-            System.out.println("Bağlantı oluştu");
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1,4082);
-            int result = statement.executeUpdate();
-            System.out.println("Kayıt güncellendi");
-
-        } catch (SQLException exception) {
-            helper.showErrorMessage(exception);
-        }
-        finally {
-            statement.close();
-            connection.close();
-        }
     }
 
     public static void selectDemo()throws SQLException {
@@ -73,6 +53,53 @@ public class Main {
             statement.setInt(4,70000);
             int result = statement.executeUpdate();
             System.out.println("Kayıt eklendi");
+
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        }
+        finally {
+            statement.close();
+            connection.close();
+        }
+    }
+
+    public static void updateData() throws SQLException {
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        try {
+
+            connection = helper.getConnection();
+            String sql = "update city set population=100000, disctrict = 'Düzce' where id = ?";
+            System.out.println("Bağlantı oluştu");
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1,4082);
+            int result = statement.executeUpdate();
+            System.out.println("Kayıt güncellendi");
+
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        }
+        finally {
+            statement.close();
+            connection.close();
+        }
+    }
+    public static void deleteData() throws SQLException {
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        try {
+
+            connection = helper.getConnection();
+            String sql = "delete from city where id = ?";
+            System.out.println("Bağlantı oluştu");
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1,4082);
+            int result = statement.executeUpdate();
+            System.out.println("Kayıt silindi");
 
         } catch (SQLException exception) {
             helper.showErrorMessage(exception);
