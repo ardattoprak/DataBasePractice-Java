@@ -10,7 +10,7 @@ public class Main {
         try {
 
             connection = helper.getConnection();
-            String sql = "insert into city (Name,CountryCode,District,Population) values('?','?','?',?)";
+            String sql = "insert into city (Name,CountryCode,District,Population) values(?,?,?,?)";
             System.out.println("Bağlantı oluştu");
             statement = connection.prepareStatement(sql);
             statement.setString(1,"Düzce");
