@@ -10,9 +10,10 @@ public class Main {
         try {
 
             connection = helper.getConnection();
-            String sql = "update city set population=80000 where id = 4082";
+            String sql = "update city set population=100000, disctrict = 'Düzce' where id = ?";
             System.out.println("Bağlantı oluştu");
             statement = connection.prepareStatement(sql);
+            statement.setInt(1,4082);
             int result = statement.executeUpdate();
             System.out.println("Kayıt güncellendi");
 
